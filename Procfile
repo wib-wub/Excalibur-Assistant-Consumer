@@ -1,2 +1,2 @@
-web: yarn run production
-worker: yarn run dummy
+worker: yarn run production
+web: yarn run dummy
