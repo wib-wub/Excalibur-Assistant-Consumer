@@ -1,1 +1,1 @@
-web: yarn run production
+worker: yarn run production
