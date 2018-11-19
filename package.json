@@ -3,18 +3,21 @@
   "version": "0.0.1",
   "main": "src/index.js",
   "engines": {
-    "node": "10.11.0",
+    "node": "10.13.0",
     "yarn": "1.12.1"
   },
   "license": "MIT",
   "dependencies": {
     "amqplib": "*",
     "axios": "^0.18.0",
+    "concurrently": "^4.1.0",
     "fastify": "^1.13.0"
   },
   "scripts": {
-    "start": "nodemon --watch src src/index.js",
-    "production": "NODE_ENV=production node src/index.js",
+    "start": "concurrently \"yarn run facebook\" \"yarn run line\"",
+    "facebook": "nodemon --watch src src/facebook.js",
+    "line": "nodemon --watch src src/line.js",
+    "production": "concurrently \"NODE_ENV=production node src/facebook.js\" \" NODE_ENV=production node src/line.js\"",
     "dummy": "node web.js"
   }
 }

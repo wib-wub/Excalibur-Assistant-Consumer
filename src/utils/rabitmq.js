@@ -4,7 +4,6 @@ const config = require('../config');
 
 const urlrmq = config.queueUrl;
 
-
 class rabitmq {
   constructor () {
     this.amqplib = amqplib.connect(urlrmq)
@@ -32,6 +31,7 @@ class rabitmq {
           worker.assertQueue(queueName);
           worker.consume(queueName,async msg => {
             if(msg !== null){
+              console.log(`Get Message from ${queueName}`);
               const content = JSON.parse(msg.content);
               try {
                 const result = await axios.post(`${url}`, { data: content });
