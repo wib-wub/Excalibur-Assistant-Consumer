@@ -1,0 +1,18 @@
+version: '3'
+services:
+  excalibur-consumer-node:  
+    build: node/
+    container_name: excalibur-consumer-node
+    tty: true
+    volumes:
+      - ../:/app
+    working_dir: /app
+    environment:
+      - queueUrl=
+      - NODE_ENV=production
+      - apiUrl=http://13.251.74.80:8081
+    command: >
+      sh -c "yarn --ignore-engines
+      && pm2 start -f src/facebook.js --name="facebook" --instances 1 --max-memory-restart 150M
+      && pm2 start -f src/line.js --name="line" --instances 1 --max-memory-restart 150M
+      && pm2-docker start daemon-app.js --instances 1"
