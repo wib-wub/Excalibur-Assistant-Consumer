@@ -9,7 +9,7 @@
   "license": "MIT",
   "dependencies": {
     "amqplib": "*",
-    "axios": "^0.18.0",
+    "axios": "^0.19.2",
     "concurrently": "^4.1.0",
     "fastify": "^1.13.0"
   },
